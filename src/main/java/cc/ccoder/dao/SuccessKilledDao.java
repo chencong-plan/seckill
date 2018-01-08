@@ -1,6 +1,7 @@
 package cc.ccoder.dao;
 
 import cc.ccoder.entity.SuccessKilled;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author : ChenCong
@@ -15,7 +16,7 @@ public interface SuccessKilledDao {
      * @param userPhone 用户电话号码
      * @return 插入的行数，0 表示插入失败
      */
-    int insertSuccessKilled(Long seckillId, Long userPhone);
+    int insertSuccessKilled(@Param("seckillId") Long seckillId, @Param("userPhone") Long userPhone);
 
     /**
      * 根据id查询SuccessKilled 并携带秒杀产品实体
@@ -23,6 +24,6 @@ public interface SuccessKilledDao {
      * @param seckillId
      * @return
      */
-    SuccessKilled queryByIdWithSeckill(Long seckillId);
+    SuccessKilled queryByIdWithSeckill(@Param("seckillId") Long seckillId,@Param("userPhone") Long userPhone);
 
 }

@@ -1,6 +1,7 @@
 package cc.ccoder.dao;
 
 import cc.ccoder.entity.Seckill;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface SeckillDao {
      * @param killTime
      * @return 如果影响行数>1,表示更新的行数
      */
-    int reduceNumber(Long seckillId, Date killTime);
+    int reduceNumber(@Param("seckillId") Long seckillId,@Param("killTime") Date killTime);
 
     /**
      * 查询库存
@@ -36,5 +37,5 @@ public interface SeckillDao {
      * @param limit  偏移量之后的行数(大小)
      * @return
      */
-    List<Seckill> queryAll(int offset, int limit);
+    List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 }

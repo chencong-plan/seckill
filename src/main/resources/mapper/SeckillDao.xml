@@ -15,7 +15,7 @@
               AND NUMBER > 0
     </update>
 
-    <select id="queryById" resultMap="Seckill" parameterType="Long">
+    <select id="queryById" resultType="Seckill" parameterType="Long">
         SELECT
             seckill_id,
             name,

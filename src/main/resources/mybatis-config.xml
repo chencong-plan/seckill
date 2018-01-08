@@ -5,17 +5,15 @@
 <configuration>
     <!--配置全局属性-->
     <settings>
-        <!--使用jdbc的getGeneratedKeys获取数据库自增主键的值-->
+        <!--使用jdbc的getGeneratekeys获取自增主键值-->
         <setting name="useGeneratedKeys" value="true"/>
-
-        <!--使用列别名替换列名 默认true-->
-        <!--
-            select name ad title from table
-            开启之后mybatis会自动帮我们将表中的name的值赋给
+        <!--使用列别名替换列名　　默认值为true
+        select name as title(实体中的属性名是title) form table;
+        开启后mybatis会自动帮我们把表中name的值赋到对应实体的title属性中
         -->
-        <setting name="userColumnLabel" value="true"/>
-        
-        <!--开启驼峰命名转换：Table(create_time) -> Entity(createTime)-->
+        <setting name="useColumnLabel" value="true"/>
+        <!--开启驼峰命名转换Table:create_time到 Entity(createTime)-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+
 </configuration>
