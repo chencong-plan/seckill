@@ -2,6 +2,7 @@ package cc.ccoder.dao;
 
 import cc.ccoder.entity.SuccessKilled;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author : ChenCong
