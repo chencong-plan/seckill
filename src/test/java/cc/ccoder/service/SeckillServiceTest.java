@@ -53,19 +53,27 @@ public class SeckillServiceTest implements Serializable {
     }
 
     @Test
-    public void executeSeckill() throws Exception {
+    public void testSeckillLog()throws Exception{
         Long id = 1000L;
-        Long userPhone = 13612312312L;
-        String md5 = "";
-        try {
-            SeckillExecution seckillExecution = seckillService.executeSeckill(id, userPhone, md5);
-            logger.info("result={}", seckillExecution);
-        } catch (RepeatKillException e) {
-            logger.error(e.getMessage());
-        } catch (SeckillCloseException e) {
-            logger.error(e.getMessage());
-        }
+        Exposer exposer = seckillService.exportSeckillUrl(id);
+        if (exposer.isExposed()){
+            logger.info("exposer={}", exposer);
+            Long userPhone = 13612312312L;
+            String md5= exposer.getMd5();
+            try {
+                SeckillExecution seckillExecution = seckillService.executeSeckill(id, userPhone, md5);
+                logger.info("result={}", seckillExecution);
+            } catch (RepeatKillException e) {
+                logger.error(e.getMessage());
+            } catch (SeckillCloseException e) {
+                logger.error(e.getMessage());
+            }
 
+        }else{
+            // 秒杀未开启
+            logger.warn("exposer={}",exposer);
+        }
     }
+
 
 }
