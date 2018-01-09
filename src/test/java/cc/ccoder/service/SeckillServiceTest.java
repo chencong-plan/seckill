@@ -1,5 +1,6 @@
 package cc.ccoder.service;
 
+import cc.ccoder.dto.Exposer;
 import cc.ccoder.entity.Seckill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-dao.xml"})
-public class SeckillServiceTest implements Serializable{
+public class SeckillServiceTest implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -37,16 +38,20 @@ public class SeckillServiceTest implements Serializable{
     public void getById() throws Exception {
         Long id = 1000L;
         Seckill seckill = seckillService.getById(id);
-        logger.info("seckill" + seckill);
+        logger.info("seckill={}", seckill);
 
     }
 
     @Test
     public void exportSeckillUrl() throws Exception {
+        Long id = 1000L;
+        Exposer exposer = seckillService.exportSeckillUrl(id);
+        logger.info("exposer={}", exposer);
     }
 
     @Test
     public void executeSeckill() throws Exception {
+
     }
 
 }
