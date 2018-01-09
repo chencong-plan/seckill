@@ -19,6 +19,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Dao" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/spring-serice.xml</file>
         </fileset>
       </configuration>
     </facet>
