@@ -1,6 +1,7 @@
 package cc.ccoder.service;
 
 import cc.ccoder.dto.Exposer;
+import cc.ccoder.dto.SeckillExecution;
 import cc.ccoder.entity.Seckill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,6 +52,11 @@ public class SeckillServiceTest implements Serializable {
 
     @Test
     public void executeSeckill() throws Exception {
+        Long id = 1000L;
+        Long userPhone = 13612312312L;
+        String md5="";
+        SeckillExecution seckillExecution = seckillService.executeSeckill(id, userPhone, md5);
+        logger.info("result={}",seckillExecution);
 
     }
 
