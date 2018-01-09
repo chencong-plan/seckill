@@ -1,6 +1,7 @@
 package cc.ccoder.dto;
 
 import cc.ccoder.entity.SuccessKilled;
+import cc.ccoder.enums.SeckillStatEnum;
 
 /**
  * @author : ChenCong
@@ -29,16 +30,16 @@ public class SeckillExecution {
     public SeckillExecution() {
     }
 
-    public SeckillExecution(Long seckillId, Integer state, String stateInfo, SuccessKilled successKilled) {
+    public SeckillExecution(Long seckillId, SeckillStatEnum statEnum ,SuccessKilled successKilled) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getStateInfo();
         this.successKilled = successKilled;
     }
 
-    public SeckillExecution(Integer state, String stateInfo) {
-        this.state = state;
-        this.stateInfo = stateInfo;
+    public SeckillExecution( SeckillStatEnum statEnum) {
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getStateInfo();
     }
 
     public Long getSeckillId() {
