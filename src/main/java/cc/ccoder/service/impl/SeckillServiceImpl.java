@@ -90,7 +90,7 @@ public class SeckillServiceImpl implements SeckillService {
             } else {
                 // 减库存成功了 记录购买行为
                 int insertCount = successKilledDao.insertSuccessKilled(seckillId, userPhone);
-                // 唯一:seckillId ,userPhone
+                // 唯一记录，联合主键:seckillId ,userPhone
                 if (insertCount <= 0) {
                     // 重复秒杀
                     throw new RepeatKillException("seckill repeated");

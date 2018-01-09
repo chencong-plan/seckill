@@ -55,4 +55,5 @@ Caused by: org.apache.ibatis.binding.BindingException: Parameter 'offset' not fo
 List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 ```
 
+[!images](images/why_useIOC.png)
 
