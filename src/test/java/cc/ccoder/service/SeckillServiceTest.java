@@ -3,6 +3,8 @@ package cc.ccoder.service;
 import cc.ccoder.dto.Exposer;
 import cc.ccoder.dto.SeckillExecution;
 import cc.ccoder.entity.Seckill;
+import cc.ccoder.exception.RepeatKillException;
+import cc.ccoder.exception.SeckillCloseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -54,9 +56,15 @@ public class SeckillServiceTest implements Serializable {
     public void executeSeckill() throws Exception {
         Long id = 1000L;
         Long userPhone = 13612312312L;
-        String md5="";
-        SeckillExecution seckillExecution = seckillService.executeSeckill(id, userPhone, md5);
-        logger.info("result={}",seckillExecution);
+        String md5 = "";
+        try {
+            SeckillExecution seckillExecution = seckillService.executeSeckill(id, userPhone, md5);
+            logger.info("result={}", seckillExecution);
+        } catch (RepeatKillException e) {
+            logger.error(e.getMessage());
+        } catch (SeckillCloseException e) {
+            logger.error(e.getMessage());
+        }
 
     }
 
