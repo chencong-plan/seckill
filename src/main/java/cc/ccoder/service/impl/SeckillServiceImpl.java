@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
@@ -26,7 +27,7 @@ import java.util.List;
  * @author chencong , Created in 2018/1/9 20:29
  */
 @Service
-public class SeckillServiceImpl implements SeckillService,Serializable {
+public class SeckillServiceImpl implements SeckillService, Serializable {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -93,9 +94,9 @@ public class SeckillServiceImpl implements SeckillService,Serializable {
      * 2、保证事务方法的执行时间尽可能短，不要穿插其他网络操作RPC/HTTP请求/或者剥离到事务方法外部
      * 3、不是所有方法都需要事务，如果只有一条修改操作，只读操作不需要事务控制
      *
-     * @param seckillId
-     * @param userPhone
-     * @param md5
+     * @param seckillId 秒杀商品ID
+     * @param userPhone 用户手机号
+     * @param md5       该秒杀的秘钥
      * @return
      * @throws RepeatKillException
      * @throws SeckillCloseException
