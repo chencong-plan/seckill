@@ -55,4 +55,32 @@ Caused by: org.apache.ibatis.binding.BindingException: Parameter 'offset' not fo
 List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 ```
 
+#### 前端交互过程
+
+[!images](http://osal57kgi.bkt.clouddn.com/jiaohusheji.png)
+
+
+#### Restful 接口设计
+
+
+#### SpringMVC 使用技巧
+
+- SpringMVC 配置和运行流程
+
+[!images](http://osal57kgi.bkt.clouddn.com/springMVC.png)
+
+- DTO service和前端页面传递数据
+
+- 注解映射驱动 `@RequestMapping`
+
+#### Bootstrap和jquery插件使用
+
+#### 秒杀Url设计
+
+- GET /seckill/list 秒杀列表
+- GET /seckill/{id}/detail 详情页
+- GET /seckill/time/now  系统时间
+- POST /seckill/{id}/exposer 暴露秒杀
+- POST /seckill/{id}/{md5}/execution  执行秒杀
+
 
