@@ -32,7 +32,7 @@ public class SeckillExecution {
 
     public SeckillExecution(Long seckillId, SeckillStatEnum statEnum) {
         this.seckillId = seckillId;
-        this.stateInfo = stateInfo;
+        this.stateInfo = statEnum.getStateInfo();
     }
 
     public SeckillExecution(Long seckillId, SeckillStatEnum statEnum , SuccessKilled successKilled) {

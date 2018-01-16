@@ -2,17 +2,66 @@
  * 存放主要交互逻辑的js代码
  * javascript交互逻辑模块化
  * */
+
 var seckill = {
     /*封装秒杀相关ajax的url*/
     URL: {
         now: function () {
             return '/seckill/time/now';
+        },
+        exposer: function (seckillId) {
+            return '/seckill/' + seckillId + '/exposer';
+        },
+        execution: function (seckillId, md5) {
+            return '/seckill/' + seckillId + '/' + md5 + '/execution';
         }
+
     },
     //处理秒杀逻辑
     // 获取秒杀地址，控制显示逻辑，执行秒杀
-    handleSeckill: function () {
-
+    handleSeckill: function (seckillId, node) {
+        //获取秒杀地址  控制显示逻辑 执行秒杀
+        node.hide().html('<button class="btn btn-primary btn-lg" id="killBtn">开始秒杀</button>');
+        $.post(seckill.URL.exposer(seckillId), {}, function (result) {
+            //在回调函数中执行交互流程
+            if (result && result['success']) {
+                var exposer = result['data'];
+                if (exposer['exposed']) {
+                    //开始秒杀
+                    //获取秒杀地址
+                    var md5 = exposer['md5'];
+                    var killUrl = seckill.URL.execution(seckillId, md5);
+                    console.log("killUrl:" + killUrl);
+                    // 使用one 点击事件只绑定一次，防止多次点击发送大量相同请求
+                    $('#killBtn').one('click', function () {
+                        //绑定执行秒杀的操作
+                        // 第一步先禁用按钮
+                        $(this).addClass('disabled');
+                        // 第二步 发送秒杀的请求
+                        $.post(killUrl, {}, function (result) {
+                            if (result && result['success']) {
+                                var killResult = result['data'];
+                                var state = killResult['state'];
+                                var stateInfo = killResult['stateInfo'];
+                                console.log("stateInfo:"+stateInfo);
+                                //显示秒杀结果
+                                node.html('<span class="label label-success">' + stateInfo + '</span>');
+                            }
+                        });
+                    });
+                    node.show();
+                } else {
+                    // 未开启秒杀
+                    var now = exposer['now'];
+                    var start = exposer['start'];
+                    var end = exposer['end'];
+                    //重新计算计时逻辑
+                    seckill.countdown(seckillId, now, start, end);
+                }
+            } else {
+                console.log('result' + result);
+            }
+        });
     },
     //验证手机号
     validatePhone: function (phone) {
@@ -26,6 +75,7 @@ var seckill = {
     countdown: function (seckillId, nowTime, startTime, endTime) {
         var seckillBox = $('#seckill-box');
         // 时间判断
+        console.log("now:"+nowTime +"   endTime:"+endTime);
         if (nowTime > endTime) {
             //秒杀结束
             seckillBox.html("秒杀结束");
@@ -39,10 +89,10 @@ var seckill = {
                 //时间完成后回调时间
             }).on('finish.countdown', function () {
                 // 获取秒杀地址，控制显示逻辑，执行秒杀
-                seckill.handleSeckill(seckillId,seckillBox);
+                seckill.handleSeckill(seckillId, seckillBox);
             });
         } else {
-            seckill.handleSeckill(seckillId,seckillBox);
+            seckill.handleSeckill(seckillId, seckillBox);
         }
     },
     //详情页秒杀逻辑
@@ -84,6 +134,7 @@ var seckill = {
             $.get(seckill.URL.now(), {}, function (result) {
                 if (result && result['success']) {
                     var nowTime = result['data'];
+                    console.log("nowTime:"+nowTime);
                     //时间判断
                     // 根据系统当前时间 秒杀时间 秒杀结束时间
                     seckill.countdown(seckillId, nowTime, startTime, endTime);
