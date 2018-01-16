@@ -57,7 +57,7 @@ List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
 #### 前端交互过程
 
-[!images](http://osal57kgi.bkt.clouddn.com/jiaohusheji.png)
+![前端交互设计](http://osal57kgi.bkt.clouddn.com/jiaohusheji.png)
 
 
 #### Restful 接口设计
@@ -67,13 +67,19 @@ List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
 - SpringMVC 配置和运行流程
 
-[!images](http://osal57kgi.bkt.clouddn.com/springMVC.png)
+![springMVC运行过程](http://osal57kgi.bkt.clouddn.com/springMVC.png)
 
 - DTO service和前端页面传递数据
 
 - 注解映射驱动 `@RequestMapping`
 
 #### Bootstrap和jquery插件使用
+
+- Bootstrap组件，table panel面板
+
+- JavaScript模块化（类似于Java代码分包分类）
+
+- jquery&plugin的使用（countdown/cookie插件）
 
 #### 秒杀Url设计
 
