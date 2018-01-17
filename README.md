@@ -55,6 +55,8 @@ Caused by: org.apache.ibatis.binding.BindingException: Parameter 'offset' not fo
 List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 ```
 
+### 总结
+
 #### 前端交互过程
 
 ![前端交互设计](http://osal57kgi.bkt.clouddn.com/jiaohusheji.png)
@@ -89,4 +91,9 @@ List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 - POST /seckill/{id}/exposer 暴露秒杀
 - POST /seckill/{id}/{md5}/execution  执行秒杀
 
+#### 秒杀优化
 
+![秒杀优化](http://osal57kgi.bkt.clouddn.com/youhua.png)
+
+
+###秒杀优化
