@@ -28,7 +28,6 @@ public class SeckillServiceTest implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private SeckillService seckillService;
 
     @Test
