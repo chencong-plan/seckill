@@ -2,6 +2,7 @@ package cc.ccoder.service.impl;
 
 import cc.ccoder.dao.SeckillDao;
 import cc.ccoder.dao.SuccessKilledDao;
+import cc.ccoder.dao.cache.RedisDao;
 import cc.ccoder.dto.Exposer;
 import cc.ccoder.dto.SeckillExecution;
 import cc.ccoder.entity.Seckill;
@@ -46,6 +47,12 @@ public class SeckillServiceImpl implements SeckillService, Serializable {
 
     @Autowired
     private SuccessKilledDao successKilledDao;
+
+    /**
+     * 注入redisDao
+     */
+    @Autowired
+    private RedisDao redisDao;
 
     @Override
     public List<Seckill> getSeckillList() {
