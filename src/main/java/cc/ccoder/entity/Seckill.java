@@ -7,7 +7,7 @@ import java.util.Date;
  * @author : ChenCong
  * @date : Created in 11:03 2018/1/8
  */
-public class Seckill {
+public class Seckill{
 
     private Long seckillId;
     private String name;

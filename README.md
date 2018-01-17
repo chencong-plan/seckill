@@ -97,3 +97,5 @@ List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
 
 ###秒杀优化
+
+增加`redis`缓存，RedisDao并且提供测试
