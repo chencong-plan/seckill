@@ -1,5 +1,29 @@
 ## Java高并发秒杀系统API
 
+### 使用方式
+
++ 下载项目 
+`clone git@github.com:chencong-plan/seckill.git`
+
++ 修改数据库配置
+`resources`>`jdbc.properties`中数据库`url` `user`  `password`等配置，修改成自己的
+
++ 下载数据库脚本
+`resources`当中的`sql`当中有`schema.sql`为数据库脚本
+
++ 配置`redis`
+使用本地`redis`进行缓存，`ip`为`localhost` `port`为`6379`
+
+如果想要修改`redis`可以查看`spring-dao.xml`配置文件当中关于`redisDao`这个`bean`的注入方法
+```xml
+<!--RedisDao 使用构造方法注入，并且指定参数值-->
+    <bean id="redisDao" class="cc.ccoder.dao.cache.RedisDao">
+        <constructor-arg index="0" value="localhost"/>
+        <constructor-arg index="1" value="6379"/>
+    </bean>
+```
+
+
 ### 技能总结
 
 #### 联合主键，避免重复秒杀
