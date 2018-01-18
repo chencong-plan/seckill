@@ -124,6 +124,6 @@ List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 ![秒杀优化](http://osal57kgi.bkt.clouddn.com/youhua.png)
 
 
-###秒杀优化
+### 秒杀优化
 
 增加`redis`缓存，RedisDao并且提供测试
