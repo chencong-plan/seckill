@@ -35,7 +35,7 @@
     </bean>
 
     <!--约定大于配置-->
-    <!--３.配置SqlSessionFactory对象-->
+    <!--3.配置SqlSessionFactory对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--往下才是mybatis和spring真正整合的配置-->
         <!--注入数据库连接池-->
@@ -60,6 +60,10 @@
     <bean id="redisDao" class="cc.ccoder.dao.cache.RedisDao">
         <constructor-arg index="0" value="localhost"/>
         <constructor-arg index="1" value="6379"/>
+    </bean>
+
+    <!--自定义的cacheDao 注入-->
+    <bean id="cacheDao" class="cc.ccoder.dao.cache.CacheDao">
     </bean>
 
 </beans>

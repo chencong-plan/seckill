@@ -20,9 +20,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * url:/模块/资源/{id}/细分
+ *
  * @author : ChenCong
  * @date : Created in 9:58 2018/1/15
- * url:/模块/资源/{id}/细分
  */
 
 @Controller
@@ -62,7 +63,7 @@ public class SeckillController {
     /**
      * ajax接口，返回json,所有的ajax请求返回结果都为SeckillResult
      *
-     * @param seckillId
+     * @param seckillId 秒杀id
      */
     @RequestMapping(value = "/{seckillId}/exposer",
             method = RequestMethod.POST,
